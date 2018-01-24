@@ -15,7 +15,7 @@ google.charts.load('current', {packages: ['corechart', 'line']});
 google.charts.setOnLoadCallback(drawBasic);
 
 function drawBasic() {
-      var nextButton = document.getElementById('b2');
+      var direction = 10;
       var data = new google.visualization.DataTable();
       data.addColumn('number', 'X');
       data.addColumn('number', 'Pressure');
@@ -57,20 +57,15 @@ function drawBasic() {
  
       var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
  
-      google.visualization.events.addListener(chart, 'select',
-          function() {
-            nextButton.disabled = options.hAxis.viewWindow.max >= 70;
-          });
+      google.visualization.events.addListener(chart, 'select', selectHandler);
+      
+      function selectHandler () {
+         options.hAxis.viewWindow.min += direction;
+         options.hAxis.viewWindow.max += direction;
+         chart.draw(data, options);
+      };     
  
       chart.draw(data, options);
- 
- nextButton.onclick = function() {
-      options.hAxis.viewWindow.min += 10;
-      options.hAxis.viewWindow.max += 10;
-      chart.draw(data, options);
-    }
- 
-    }
    
   </script>
  </body>
