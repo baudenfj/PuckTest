@@ -36,14 +36,23 @@ function drawBasic() {
       ]);
 
       var options = {
-        hAxis: {
+       height: 500,
+       chartArea: {
+          height: '100%',
+          width: '100%',
+          top: '5%',
+          left: '5%'
+        }, 
+       hAxis: {
           title: 'Time'
         },
         vAxis: {
+          ticks: [10, 20, 30, 40, 50, 60, 70, 80],
+          gridlines: {color: '#ccc'},
           title: 'Pressure'
         }
       };
-
+ 
       var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
 
       chart.draw(data, options);
