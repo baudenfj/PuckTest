@@ -48,6 +48,15 @@ function drawBasic() {
       };
  
       var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+      
+ google.visualization.events.addListener(chart, 'ready', selectHandler);
+      
+      function selectHandler () {
+         options.hAxis.viewWindow.min += direction;
+         options.hAxis.viewWindow.max += direction;
+         chart.draw(data, options);
+      }; 
+ 
       chart.draw(data, options);
     }
    
