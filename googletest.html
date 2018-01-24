@@ -55,8 +55,8 @@ function drawBasic() {
  google.visualization.events.addListener(chart, 'select', selectHandler);
       
       function selectHandler () {
-         options.hAxis.viewWindow.min += direction;
-         options.hAxis.viewWindow.max += direction;
+         options.hAxis.viewWindow.min = 10;
+         options.hAxis.viewWindow.max = 60;
          chart.draw(data, options);
       }; 
  
