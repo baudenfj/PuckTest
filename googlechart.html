@@ -1,16 +1,14 @@
 <html>
  <head>
   <title>Dashboard</title>
-  <meta name="viewport" content="width=620, initial-scale=1">
  </head>
- <body style="width:620px;height:450px">
-  <link href="https://espruino.github.io/TinyDash/tinydash.css" rel="stylesheet">
-  <script src="https://espruino.github.io/TinyDash/tinydash.js"></script>
-  <script src="https://www.puck-js.com/puck.js"></script>
-  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+ 
+ <script src="https://www.puck-js.com/puck.js"></script>
+ <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+ <div id="chart_div"></div>
   <script>
         
-<div id="chart_div"></div>
+
 
 
 google.charts.load('current', {packages: ['corechart', 'line']});
@@ -50,3 +48,7 @@ function drawBasic() {
 
       chart.draw(data, options);
     }
+   
+  </script>
+ </body>
+</html>
