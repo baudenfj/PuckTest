@@ -31,7 +31,7 @@ function drawBasic() {
       ]);
 
        var options = {
-       height: 700,
+       height: 100,
        chartArea: {
           height: '80%',
           width: '80%',
@@ -55,8 +55,8 @@ function drawBasic() {
       chart.draw(data, options);
  
       function selectHandler () {
-         options.hAxis.viewWindow.min = 10;
-         options.hAxis.viewWindow.max = 60;
+         options.hAxis.viewWindow.min += 10;
+         options.hAxis.viewWindow.max += 10;
          chart.draw(data, options);
       }; 
  
