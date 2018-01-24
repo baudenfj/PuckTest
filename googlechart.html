@@ -8,9 +8,6 @@
  <div id="chart_div"></div>
   <script>
         
-
-
-
 google.charts.load('current', {packages: ['corechart', 'line']});
 google.charts.setOnLoadCallback(drawBasic);
 
@@ -36,7 +33,7 @@ function drawBasic() {
       ]);
 
       var options = {
-       height: 400,
+       height: 700,
        chartArea: {
           height: '80%',
           width: '80%',
@@ -57,7 +54,7 @@ function drawBasic() {
  
       var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
  
-      google.visualization.events.addListener(chart, 'select', selectHandler);
+      google.visualization.events.addListener(chart, 'ready', selectHandler);
       
       function selectHandler () {
          options.hAxis.viewWindow.min += direction;
