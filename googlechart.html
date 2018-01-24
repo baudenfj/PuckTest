@@ -62,7 +62,7 @@ function drawBasic() {
  nextButton.onclick = function() {
       options.hAxis.viewWindow.min += 10;
       options.hAxis.viewWindow.max += 10;
-      drawChart();
+      chart.draw(data, options);
     }
  
     }
