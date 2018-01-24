@@ -51,7 +51,10 @@ function drawBasic() {
       };
  
       var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-      
+        
+ options.hAxis.viewWindow.min = 10;
+ options.hAxis.viewWindow.max = 60;
+ 
  google.visualization.events.addListener(chart, 'select', selectHandler);
       
       function selectHandler () {
