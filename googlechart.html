@@ -57,7 +57,7 @@ function drawBasic() {
  
       var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
  
-      google.visualization.events.addListener(chart, 'ready',
+      google.visualization.events.addListener(chart, 'select',
           function() {
             nextButton.disabled = options.hAxis.viewWindow.max >= 70;
           });
