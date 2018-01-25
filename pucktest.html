@@ -27,14 +27,9 @@ function onLine(v) {
  var connection;
  
     path.addEventListener("click", function() {
-      alert("Received click in Puck connection");
-     Puck.connect(function(c) { alert("In Puck connect"); });
-    });   
-
- /*       
+      alert("Received click in Puck connection");      
       Puck.connect(function(c) {
-        alert("In Puck connect"); });
-       
+        alert("In Puck connect");
           if (!c) {
           alert("Couldn't connect!");
           return;
@@ -52,34 +47,9 @@ function onLine(v) {
             buf = buf.substr(i+1);
             i = buf.indexOf("\n");
           }
-        }); // End Puck.connect()
- 
-    });
-     if (connection) {
-        connection.close();
-        connection = undefined;
-      alert("Connection closed");
-      } 
-     alert("Before connect!");
-     Puck.connect(function(c) {
-        if (!c) {
-          alert("Couldn't connect!");
-          return;
-        }
-        connection = c;
-        // Handle the data we get back, and call 'onLine'
-        // whenever we get a line
-        var buf = "";
-       alert("Before connection on");
-        connection.on("data", function(d) {
-          buf += d;
-          var i = buf.indexOf("\n");
-          while (i>=0) {
-            onLine(buf.substr(0,i));
-            buf = buf.substr(i+1);
-            i = buf.indexOf("\n");
-          }
-        });
+        }); // connection.on () 
+    }); // End Puck.connect () 
+ /*
        // First, reset Puck.js
        alert("Before connection write");
         connection.write("reset();\n", function() {
@@ -87,9 +57,8 @@ function onLine(v) {
           setTimeout(function() { connection.write(
            "setInterval(function(){Bluetooth.println(readpressure());},100); NRF.on('disconnect', function() {reset()});\n",
                                     function() { console.log("Ready..."); }); }, 1500);
-                                             });
-     });
-     */
+                                             }); // end connection write */
+     }); // end path.event listen()
        </script>
  </body>
 </html>
