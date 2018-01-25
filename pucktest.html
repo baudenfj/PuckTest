@@ -18,10 +18,6 @@ function onLine(v) {
   alert("In receiving data");
 } 
  
-// When clicked, connect or disconnect
-    // var connection;
-    alert("waiting for a click");
- 
  var path = document.getElementsByTagName('path')[0];
 
  // When clicked, connect or disconnect
@@ -29,7 +25,7 @@ function onLine(v) {
  
     path.addEventListener("click", function() {      
       Puck.connect(function(c) {
-        alert("In Puck connect");
+      //  alert("In Puck connect");
           if (!c) {
           alert("Couldn't connect!");
           return;
