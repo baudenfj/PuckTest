@@ -21,14 +21,15 @@ function onLine(v) {
  
  var path = document.getElementsByTagName('path')[0];
 
+ // When clicked, connect or disconnect
+ var connection;
+ 
     path.addEventListener("click", function() {
-      alert("Received click in Puck connection");
-    });
-/*  
-
+      alert("Received click in Puck connection")  
      if (connection) {
         connection.close();
         connection = undefined;
+      alert("Connection closed");
       }
       Puck.connect(function(c) {
         if (!c) {
@@ -49,6 +50,7 @@ function onLine(v) {
           }
         });
        // First, reset Puck.js
+       alert("Before connection write");
         connection.write("reset();\n", function() {
           // Wait for it to reset itself
           setTimeout(function() { connection.write(
