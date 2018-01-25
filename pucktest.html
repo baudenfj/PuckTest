@@ -30,6 +30,8 @@ function onLine(v) {
  
     path.addEventListener("click", function() {
       alert("Received click in Puck connection")
+    });
+ /*    
          Puck.connect(function(c) {
         alert("In Puck connect");
           if (!c) {
@@ -51,7 +53,7 @@ function onLine(v) {
           }
         }); // End Puck.connect()
     });
- /*    if (connection) {
+     if (connection) {
         connection.close();
         connection = undefined;
       alert("Connection closed");
