@@ -5,22 +5,20 @@
  </body>
 <script src="https://www.puck-js.com/puck.js"></script>
 <script>
- 
-alert("Received click before connection");
- 
+ /* 
 // Called when we get a line of data - updates the light color
 function onLine(v) {
   console.log("Received: "+JSON.stringify(v));
 } 
-
- /*
+*/
+ 
 // When clicked, connect or disconnect
-    var connection;
-
+    // var connection;
+alert("Received click before connection");
 
     path.addEventListener("click", function() {
       alert("Received click in Puck connection"); });
-
+/*
      if (connection) {
         connection.close();
         connection = undefined;
