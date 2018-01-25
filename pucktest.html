@@ -27,8 +27,7 @@ function onLine(v) {
  // When clicked, connect or disconnect
  var connection;
  
-    path.addEventListener("click", function() {
-      alert("Received click in Puck connection");      
+    path.addEventListener("click", function() {      
       Puck.connect(function(c) {
         alert("In Puck connect");
           if (!c) {
