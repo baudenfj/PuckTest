@@ -54,7 +54,7 @@ function drawBasic() {
  
       var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
  
-      // google.visualization.events.addListener(chart, 'ready', selectHandler);
+      google.visualization.events.addListener(chart, 'select', selectHandler);
       
       function selectHandler () {
          options.hAxis.viewWindow.min += direction;
