@@ -25,12 +25,13 @@ function onLine(v) {
  var connection;
  
     path.addEventListener("click", function() {
-      alert("Received click in Puck connection")  
+      alert("Received click in Puck connection") 
+    });
  /*    if (connection) {
         connection.close();
         connection = undefined;
       alert("Connection closed");
-      } */
+      } 
      alert("Before connect!");
      Puck.connect(function(c) {
         if (!c) {
@@ -60,7 +61,7 @@ function onLine(v) {
                                     function() { console.log("Ready..."); }); }, 1500);
                                              });
      });
-     
+     */
        </script>
  </body>
 </html>
