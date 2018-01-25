@@ -1,6 +1,6 @@
 <html>
  <head>
-  <title>Puck test </title>
+  <title>Puck 001 </title>
  </head>
  </body>
   <svg viewBox="0 0 24 24">
@@ -40,6 +40,7 @@ function onLine(v) {
         // Handle the data we get back, and call 'onLine'
         // whenever we get a line
         var buf = "";
+       alert("Before connection on data");
         connection.on("data", function(d) {
           buf += d;
           var i = buf.indexOf("\n");
