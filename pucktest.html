@@ -27,11 +27,14 @@ function onLine(v) {
  var connection;
  
     path.addEventListener("click", function() {
-      alert("Received click in Puck connection")
-    });
- /*    
-         Puck.connect(function(c) {
-        alert("In Puck connect");
+      alert("Received click in Puck connection");
+     Puck.connect(function() { alert("In Puck connect"); });
+    });   
+
+ /*       
+      Puck.connect(function(c) {
+        alert("In Puck connect"); });
+       
           if (!c) {
           alert("Couldn't connect!");
           return;
@@ -50,6 +53,7 @@ function onLine(v) {
             i = buf.indexOf("\n");
           }
         }); // End Puck.connect()
+ 
     });
      if (connection) {
         connection.close();
