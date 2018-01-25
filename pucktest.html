@@ -49,7 +49,7 @@ function onLine(v) {
           }
         }); // connection.on () 
     }); // End Puck.connect () 
- /*
+     
        // First, reset Puck.js
        alert("Before connection write");
         connection.write("reset();\n", function() {
@@ -57,7 +57,8 @@ function onLine(v) {
           setTimeout(function() { connection.write(
            "setInterval(function(){Bluetooth.println(readpressure());},100); NRF.on('disconnect', function() {reset()});\n",
                                     function() { console.log("Ready..."); }); }, 1500);
-                                             }); // end connection write */
+                                             }); // end connection write 
+     
      }); // end path.event listen()
        </script>
  </body>
