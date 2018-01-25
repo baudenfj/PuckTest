@@ -1,0 +1,53 @@
+
+<html>
+ <head>
+  <title>Puck 001</title>
+ </head>
+ </body>
+  <svg viewBox="0 0 24 24">
+    <path fill="#000000" d="M12,2A7,7 0 0,0 5,9C5,11.38 6.19,13.47 8,14.74V17A1,1 0 0,0 9,18H15A1,1 0 0,0 16,17V14.74C17.81,13.47 19,11.38 19,9A7,7 0 0,0 12,2M9,21A1,1 0 0,0 10,22H14A1,1 0 0,0 15,21V20H9V21Z" />
+  </svg>
+
+<script src="https://www.puck-js.com/puck.js"></script>
+<script>
+ 
+// Called when we get a line of data - updates the light color
+function onLine(v) {
+  console.log("Received: "+JSON.stringify(v));
+  // alert("In receiving data");
+} 
+ 
+ var path = document.getElementsByTagName('path')[0];
+ // When clicked, connect or disconnect
+ var connection;
+ 
+    path.addEventListener("click", function() {      
+      Puck.connect(function(c) {
+        alert("In Puck connect");
+          if (!c) {
+          alert("Couldn't connect!");
+          return;
+        }
+        connection = c;
+        // Handle the data we get back, and call 'onLine'
+        // whenever we get a line
+        var buf = "";
+        connection.on("data", function(d) {
+          buf += d;
+          var i = buf.indexOf("\n");
+          while (i>=0) {
+            onLine(buf.substr(0,i));
+            buf = buf.substr(i+1);
+            i = buf.indexOf("\n");
+          }
+        }); // connection.on () 
+    }); // End Puck.connect () 
+     
+       // First, reset Puck.js
+       alert("Before readpressure()");
+       connection.write("setInterval(function(){Bluetooth.println(readpressure());} ,100); \n",
+              function() { console.log("Ready..."); });  // end connection write  
+     }); // end path.event listen()
+       </script>
+ </body>
+</html>
