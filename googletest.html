@@ -19,6 +19,7 @@ function onLine(v) {
 // When clicked, connect or disconnect
     var connection;
     path.addEventListener("click", function() {
+      alert("Received click in Puck connection");
       if (connection) {
         connection.close();
         connection = undefined;
@@ -49,7 +50,7 @@ function onLine(v) {
                                     function() { console.log("Ready..."); }); }, 1500);
                                              });
      });
-     
+   
 function drawBasic() {
       var direction = 10;
       var data = new google.visualization.DataTable();
