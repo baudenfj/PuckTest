@@ -10,11 +10,12 @@
 <script src="https://www.puck-js.com/puck.js"></script>
 <script>
 
- alert("Before connection on");
+
 
 // Called when we get a line of data - updates the light color
 function onLine(v) {
   console.log("Received: "+JSON.stringify(v));
+  alert("In receiving data");
 } 
  
 // When clicked, connect or disconnect
@@ -38,7 +39,6 @@ function onLine(v) {
         // Handle the data we get back, and call 'onLine'
         // whenever we get a line
         var buf = "";
-       alert("Before connection on");
         connection.on("data", function(d) {
           buf += d;
           var i = buf.indexOf("\n");
