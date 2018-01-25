@@ -10,12 +10,10 @@
 <script src="https://www.puck-js.com/puck.js"></script>
 <script>
 
- /*
 // Called when we get a line of data - updates the light color
 function onLine(v) {
   console.log("Received: "+JSON.stringify(v));
 } 
-*/
  
 // When clicked, connect or disconnect
     // var connection;
@@ -24,8 +22,7 @@ function onLine(v) {
  var path = document.getElementsByTagName('path')[0];
 
     path.addEventListener("click", function() {
-      alert("Received click in Puck connection"); });
-/*
+      alert("Received click in Puck connection");
      if (connection) {
         connection.close();
         connection = undefined;
@@ -56,7 +53,7 @@ function onLine(v) {
                                     function() { console.log("Ready..."); }); }, 1500);
                                              });
      });
-*/
+     
        </script>
  </body>
 </html>
