@@ -17,6 +17,7 @@ google.charts.setOnLoadCallback(time_chart);
 function time_chart() {
   
       var direction = 10;
+      var connection;
       var data = new google.visualization.DataTable();
       data.addColumn('number', 'X');
       data.addColumn('number', 'Pressure');
