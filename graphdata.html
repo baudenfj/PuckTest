@@ -20,7 +20,7 @@ var connection;
 
 function time_chart() {
   
-      var direction = 10;
+      var direction = 30;
       var xconnect = document.getElementById("myPuck_connect");
       var data = new google.visualization.DataTable();
       data.addColumn('number', 'X');
@@ -34,6 +34,10 @@ function onLine(v) {
            data.setCell(index, 0, chart_time);
            data.setCell(index, 1, v);
            chart_time+=0.1;
+           if(chart_time>= options.hAxis.viewWindow.max) {
+                       options.hAxis.viewWindow.min += direction;
+                       options.hAxis.viewWindow.max += direction;
+           };
            index++;
            chart.draw(data, options);
      } 
