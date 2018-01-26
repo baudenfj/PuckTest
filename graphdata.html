@@ -5,6 +5,7 @@
  </head>
   
  <button onclick="bluetooth_connect()">Connect Puck via Bluetooth</button>
+ <button type="button" id="myBtn" >Connect Puck via Bluetooth</button>
  
  <script src="https://www.puck-js.com/puck.js"></script>
  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -19,7 +20,7 @@ var connection;
 function time_chart() {
   
       var direction = 10;
-
+      var xconnect = document.getElementById("myBtn");
       var data = new google.visualization.DataTable();
       data.addColumn('number', 'X');
       data.addColumn('number', 'Pressure');
@@ -58,6 +59,7 @@ Puck.connect(function(c) {
     }); // End Puck.connect () 
 } 
  
+ a
      var options = {
        height: 500,
        chartArea: {
