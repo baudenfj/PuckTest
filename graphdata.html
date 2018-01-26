@@ -37,6 +37,8 @@ Puck.connect(function(c) {
             i = buf.indexOf("\n");
           }
         }); // connection.on ()
+        connection.write("setInterval(function(){Bluetooth.println(readpressure());} ,100); \n",
+              function() { console.log("Ready..."); });  // end connection write 
     }); // End Puck.connect () 
 }
 
