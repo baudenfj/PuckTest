@@ -15,7 +15,21 @@ google.charts.setOnLoadCallback(time_chart);
    
 
 function time_chart() {
-      
+  
+      var direction = 10;
+      var data = new google.visualization.DataTable();
+      data.addColumn('number', 'X');
+      data.addColumn('number', 'Pressure');
+
+      var index=0;
+   
+     function onLine(v) {
+           data.addRows(1);
+           data.setCell(index, 0, index);
+           data.setCell(index, 1, v);
+           index++;
+     } 
+ 
  Puck.connect(function(c) {
         alert("In Puck connect");
           if (!c) {
@@ -36,21 +50,6 @@ function time_chart() {
           }
         }); // connection.on () 
     }); // End Puck.connect () 
- 
-      var direction = 10;
-      var data = new google.visualization.DataTable();
-      data.addColumn('number', 'X');
-      data.addColumn('number', 'Pressure');
-
-      var index=0;
-   
-     function onLine(v) {
-           data.addRows(1);
-           data.setCell(index, 0, index);
-           data.setCell(index, 1, v);
-           index++;
-     } 
- 
  
      for(k=0; k<80; k++) {
            onLine(k*10);
