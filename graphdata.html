@@ -4,7 +4,7 @@
   <title>Google Chart</title>
  </head>
   
- <button onclick="bluetooth_connect(data)">Connect Puck via Bluetooth</button>
+ <button onclick="bluetooth_connect()">Connect Puck via Bluetooth</button>
  
  <script src="https://www.puck-js.com/puck.js"></script>
  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -25,7 +25,7 @@ function onLine(v, data) {
            index++;
      } 
 
-function bluetooth_connect(data) {
+function bluetooth_connect() {
 Puck.connect(function(c) {
         alert("In Puck connect");
           if (!c) {
@@ -35,7 +35,7 @@ Puck.connect(function(c) {
         connection = c;
         // Handle the data we get back, and call 'onLine'
         // whenever we get a line
-        var buf = "";
+/*        var buf = "";
         connection.on("data", function(d) {
           buf += d;
           var i = buf.indexOf("\n");
@@ -44,7 +44,7 @@ Puck.connect(function(c) {
             buf = buf.substr(i+1);
             i = buf.indexOf("\n");
           }
-        }); // connection.on () 
+        }); // connection.on () */
     }); // End Puck.connect () 
 }
 
