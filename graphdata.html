@@ -51,6 +51,10 @@ function time_chart() {
         }); // connection.on () 
     }); // End Puck.connect () 
  
+    alert("Before readpressure()");
+    connection.write("setInterval(function(){Bluetooth.println(readpressure());} ,100); \n",
+              function() { console.log("Ready..."); });  // end connection write 
+ 
      for(k=0; k<80; k++) {
            onLine(k*10);
      };
@@ -69,7 +73,7 @@ function time_chart() {
           title: 'Time'
         },
         vAxis: {
-          ticks: [100, 200, 300, 400, 500, 600, 700, 800],
+          ticks: [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100],
           gridlines: {color: '#ccc'},
           title: 'Pressure'
         }
