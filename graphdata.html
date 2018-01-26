@@ -4,7 +4,6 @@
   <title>Google Chart</title>
  </head>
   
- <button onclick="bluetooth_connect()">Connect Puck via Bluetooth</button>
  <button type="button" id="myBtn" >Connect Puck via Bluetooth</button>
  
  <script src="https://www.puck-js.com/puck.js"></script>
@@ -59,7 +58,7 @@ Puck.connect(function(c) {
     }); // End Puck.connect () 
 } 
  
- xconnect.addEventListener("click", bluetooth_connect() );
+ xconnect.addEventListener("click", function () { bluetooth_connect(); xconnect.disabled = true; } );
  
      var options = {
        height: 500,
