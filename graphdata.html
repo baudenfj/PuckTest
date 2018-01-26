@@ -31,6 +31,9 @@ function time_chart() {
            index++;
      } 
  
+  var path = document.getElementsByTagName('path')[0];
+ // When clicked, connect or disconnect
+ 
   var connection;
  
     path.addEventListener("click", function() {      
@@ -54,7 +57,7 @@ function time_chart() {
           }
         }); // connection.on () 
     }); // End Puck.connect () 
- 
+    }); 
 
  
  alert("Before readpressure()");
