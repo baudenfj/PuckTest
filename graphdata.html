@@ -29,11 +29,21 @@ function drawBasic() {
       data.addColumn('number', 'X');
       data.addColumn('number', 'Pressure');
 
- for(k=0; k<80; k++) {
-  onLine(k*10);
- };
+      var index=0;
+   
+     function onLine(v) {
+           data.addRows(1);
+           data.setCell(index, 0, index);
+           data.setCell(index, 1, v);
+           index++;
+     } 
+ 
+ 
+     for(k=0; k<80; k++) {
+           onLine(k*10);
+     };
   
-      var options = {
+     var options = {
        height: 500,
        chartArea: {
           height: '80%',
