@@ -31,7 +31,10 @@ function time_chart() {
            index++;
      } 
  
- Puck.connect(function(c) {
+  var connection;
+ 
+    path.addEventListener("click", function() {      
+      Puck.connect(function(c) {
         alert("In Puck connect");
           if (!c) {
           alert("Couldn't connect!");
@@ -51,6 +54,8 @@ function time_chart() {
           }
         }); // connection.on () 
     }); // End Puck.connect () 
+ 
+
  
  alert("Before readpressure()");
  
