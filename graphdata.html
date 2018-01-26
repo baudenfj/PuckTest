@@ -31,6 +31,7 @@ function onLine(v) {
            data.setCell(index, 0, index);
            data.setCell(index, 1, v);
            index++;
+           chart.draw(data, options);
      } 
 
 function bluetooth_connect() {
