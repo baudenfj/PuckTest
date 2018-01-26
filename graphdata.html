@@ -15,15 +15,7 @@ google.charts.load('current', {packages: ['corechart', 'line']});
 google.charts.setOnLoadCallback(time_chart);
    
 var connection;
-var index;
-index = 0;
-   
-function onLine(v, data) {
-           data.addRows(1);
-           data.setCell(index, 0, index);
-           data.setCell(index, 1, v);
-           index++;
-     } 
+
 
 function bluetooth_connect() {
 Puck.connect(function(c) {
@@ -35,16 +27,16 @@ Puck.connect(function(c) {
         connection = c;
         // Handle the data we get back, and call 'onLine'
         // whenever we get a line
-/*        var buf = "";
+        var buf = "";
         connection.on("data", function(d) {
           buf += d;
           var i = buf.indexOf("\n");
           while (i>=0) {
-            onLine(buf.substr(0,i),data);
+            onLine(buf.substr(0,i));
             buf = buf.substr(i+1);
             i = buf.indexOf("\n");
           }
-        }); // connection.on () */
+        }); // connection.on ()
     }); // End Puck.connect () 
 }
 
@@ -57,7 +49,13 @@ function time_chart() {
       data.addColumn('number', 'Pressure');
 
       var index=0;
-
+   
+function onLine(v) {
+           data.addRows(1);
+           data.setCell(index, 0, index);
+           data.setCell(index, 1, v);
+           index++;
+     } 
 
  
  alert("Before readpressure()");
