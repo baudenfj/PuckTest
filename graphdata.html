@@ -12,32 +12,19 @@
 google.charts.load('current', {packages: ['corechart', 'line']});
 google.charts.setOnLoadCallback(time_chart);
    
+var connection;
+var index;
+index = 0;
    
-
-function time_chart() {
-  
-      var direction = 10;
-      var connection;
-      var data = new google.visualization.DataTable();
-      data.addColumn('number', 'X');
-      data.addColumn('number', 'Pressure');
-
-      var index=0;
-   
-     function onLine(v) {
+function onLine(v, data) {
            data.addRows(1);
            data.setCell(index, 0, index);
            data.setCell(index, 1, v);
            index++;
      } 
- 
-  var path = document.getElementsByTagName('path')[0];
- // When clicked, connect or disconnect
- 
-  var connection;
- 
-    path.addEventListener("click", function() {      
-      Puck.connect(function(c) {
+
+function bluetooth_connect(data) {
+Puck.connect(function(c) {
         alert("In Puck connect");
           if (!c) {
           alert("Couldn't connect!");
@@ -51,14 +38,25 @@ function time_chart() {
           buf += d;
           var i = buf.indexOf("\n");
           while (i>=0) {
-            onLine(buf.substr(0,i));
+            onLine(buf.substr(0,i),data);
             buf = buf.substr(i+1);
             i = buf.indexOf("\n");
           }
         }); // connection.on () 
     }); // End Puck.connect () 
-    }); 
+}
 
+function time_chart() {
+  
+      var direction = 10;
+
+      var data = new google.visualization.DataTable();
+      data.addColumn('number', 'X');
+      data.addColumn('number', 'Pressure');
+
+      var index=0;
+
+ <button onclick="bluetooth_connect(data)">Connect Puck via Bluetooth</button>
  
  alert("Before readpressure()");
  
