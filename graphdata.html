@@ -34,6 +34,7 @@ function onLine(v) {
            data.setCell(index, 0, chart_time);
            data.setCell(index, 1, v);
            chart_time+=0.1;
+           if(v>vmin)
            if(chart_time>= options.hAxis.viewWindow.max) {
                        options.hAxis.viewWindow.min += direction;
                        options.hAxis.viewWindow.max += direction;
@@ -77,13 +78,13 @@ Puck.connect(function(c) {
           left: '5%'
         }, 
        hAxis: {
-          ticks: [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
-          viewWindow: {min:0, max:100},
+        /*  ticks: [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
+          viewWindow: {min:0, max:100},*/
           title: 'Time'
         },
         vAxis: {
-          ticks: [900, 1000, 1100,1200],
-          gridlines: {color: '#ccc'},
+        /*  ticks: [900, 1000, 1100,1200],
+          gridlines: {color: '#ccc'}, */
           title: 'Pressure'
         }
       };
