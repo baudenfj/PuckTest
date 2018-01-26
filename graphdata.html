@@ -17,6 +17,7 @@ google.charts.setOnLoadCallback(time_chart);
    
 var connection;
 
+
 function time_chart() {
   
       var direction = 10;
@@ -26,11 +27,13 @@ function time_chart() {
       data.addColumn('number', 'Pressure');
 
       var index=0;
+      var chart_time=0;
    
 function onLine(v) {
            data.addRows(1);
-           data.setCell(index, 0, index);
+           data.setCell(index, 0, chart_time);
            data.setCell(index, 1, v);
+           chart_time+=0.1;
            index++;
            chart.draw(data, options);
      } 
