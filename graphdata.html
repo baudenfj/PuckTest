@@ -10,20 +10,11 @@
   <script>
 
 google.charts.load('current', {packages: ['corechart', 'line']});
-google.charts.setOnLoadCallback(drawBasic);
+google.charts.setOnLoadCallback(time_chart);
    
    
 
-var index=0;
-   
-function onLine(v) {
-  data.addRows(1);
-  data.setCell(index, 0, index);
-  data.setCell(index, 1, v);
-  index++;
-} 
-
-function drawBasic() {
+function time_chart() {
       var direction = 10;
       var data = new google.visualization.DataTable();
       data.addColumn('number', 'X');
@@ -57,7 +48,7 @@ function drawBasic() {
           title: 'Time'
         },
         vAxis: {
-          ticks: [10, 20, 30, 40, 50, 60, 70, 80],
+          ticks: [100, 200, 300, 400, 500, 600, 700, 800],
           gridlines: {color: '#ccc'},
           title: 'Pressure'
         }
