@@ -4,16 +4,20 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dygraph/2.1.0/dygraph.css" />
 </head>
 <body>
-<div id="graphdiv"></div>
+<div id="div_g" style="width:600px; height:300px;"></div>
 <script type="text/javascript">
-  g = new Dygraph(
-        document.getElementById("graphdiv"),  // containing div
-        "Date,Temperature\n" +                // the data series
-        "2008-05-07,75\n" +
-        "2008-05-08,70\n" +
-        "2008-05-09,80\n",
-        { }                                   // the options
-      );
+      
+      var data = [];
+      var g = new Dygraph(document.getElementById("div_g"), data,
+                          {
+                            drawPoints: true,
+                            showRoller: true,
+                            valueRange: [900, 1200],
+                            labels: ['Time', 'Pressure']
+                          });
+  
+  
+  
 </script>
 </body>
 </html>
