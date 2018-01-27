@@ -15,9 +15,9 @@
 
 $(document).ready(function () {
       var data = [];
+      var t = new Date();
       var date_win_min = new Date(t.getTime());
-      var date_win_max = new Date(t.getTime() + 60 * 1000);
-      
+      var date_win_max = new Date(t.getTime() + 60 * 1000);   
       var t = new Date();
       for (var i = 10; i >= 0; i--) {
         var x = new Date(t.getTime() - i * 1000);
