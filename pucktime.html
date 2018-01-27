@@ -39,7 +39,7 @@ $(document).ready(function () {
               date_win_max += taxis_increment;
               g.updateOptions( { dateWindow : [date_win_min, date_win_max] } );
         };
-        data.push([x, y]);
+        data.push([x, v]);
         g.updateOptions( { 'file': data } );
      }  
       
@@ -76,10 +76,9 @@ Puck.connect(function(c) {
                 }
               }
               */
-    xconnect.addEventListener("click", function () { bluetooth_connect(); xconnect.disabled = true; } );
-      
-
-      
+   
+      xconnect.addEventListener("click", function () { bluetooth_connect(); xconnect.disabled = true; } );
+         
     }); 
   
   
