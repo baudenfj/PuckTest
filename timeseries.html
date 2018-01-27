@@ -15,9 +15,10 @@
 
 $(document).ready(function () {
       var data = [];
+      var taxis_increment = 60 * 1000;           /// axis increment in milliseconds
       var t = new Date();
       var date_win_min = new Date(t.getTime());
-      var date_win_max = new Date(t.getTime() + 60 * 1000);   
+      var date_win_max = new Date(t.getTime() + taxis_increment);   
       var t = new Date();
       for (var i = 10; i >= 0; i--) {
         var x = new Date(t.getTime() - i * 1000);
@@ -47,9 +48,15 @@ $(document).ready(function () {
       window.intervalId = setInterval(function() {
         var x = new Date();  // current time
         var y = Math.random();
+        if ( x >= date_win_max) {
+              date_win_min += taxis_increment;
+              date_win_max += taxis_increment;
+              g.updateOptions( { 'dateWindow' : [date_win_min, date_win_max] } );
+        };
         data.push([x, y]);
         g.updateOptions( { 'file': data } );
       }, 1000);
+      
     }); 
   
   
