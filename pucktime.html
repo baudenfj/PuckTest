@@ -75,20 +75,9 @@ Puck.connect(function(c) {
                 }
               }
               */
+    xconnect.addEventListener("click", function () { bluetooth_connect(); xconnect.disabled = true; } );
       
-       // It sucks that these things aren't objects, and we need to store state in window.
-      window.intervalId = setInterval(function() {
-        var x = new Date();  // current time
-        var y = Math.random();
-        if ( x.getTime() >= date_win_max) {
-              date_win_min += taxis_increment;
-              date_win_max += taxis_increment;
-              //  g.updateOptions( { 'axisLabelFormatter': Dygraph.dateAxisLabelFormatter } );
-              g.updateOptions( { dateWindow : [date_win_min, date_win_max] } );
-        };
-        data.push([x, y]);
-        g.updateOptions( { 'file': data } );
-      }, 1000);
+
       
     }); 
   
