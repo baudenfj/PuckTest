@@ -3,7 +3,8 @@
 <head>
 
 <button type="button" id="myPuck_connect" > Connect Puck via Bluetooth </button>
-<button type="button" id="myrecord_start" > Start Recording </button>
+<button type="button" id="myrecord_start" > Start New Recording </button>
+<button type="button" id="myrecord_start" > Stop Recording </button>
 <button type="button" id="my_Savedata" > Save Date as  CSV - File </button>      
 
 <script src="https://www.puck-js.com/puck.js"></script>
@@ -63,8 +64,20 @@ $(document).ready(function () {
                             }
                         }); // connection.on ()
                         
-                        connection.write("setInterval(function(){Bluetooth.println(readpressure().toFixed(3));} ,100); \n", function() { });  // end connection write */
+                        connection.write("setInterval(function(){Bluetooth.println(readpressure().toFixed(3));} ,30); \n", function() { });
+                        
+                        t = new Date();
+                        var date_win_min = t.getTime();
+                        var date_win_max = date_win_min + 2*taxis_increment;
+                        g.updateOptions( { dateWindow : [date_win_min, date_win_max] } );
+                        data.splice(0,data.length);
+            
       }
+      
+      function stop_record()
+      {
+             connection.write("clearInterval();\n", function() { });
+      };
    
       function bluetooth_connect() {
             Puck.connect(function(c) {
