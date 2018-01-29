@@ -36,7 +36,7 @@ $(document).ready(function () {
       
        function onLine(v) {
         var x = new Date();  // current time 
-        var y = parseFloat(v);
+        var y = parseFloat(v).toFixed(3);
         if ( x.getTime() >= date_win_max) {
               date_win_min += taxis_increment;
               date_win_max += taxis_increment;
@@ -71,21 +71,37 @@ Puck.connect(function(c) {
 }   
       
 function savemyCSV() {
-      
-}      
-       /*
-      { 
-              axes: {
-                x: {
-                  axisLabelFormatter: function(d, gran, opts) {
-                      return Dygraph.dateAxisLabelFormatter(new Date(d.getTime() + 7200*1000), gran, opts);
+      var csvContent = '';
+
+      data.forEach(function(dataArray, index) {
+            dataString = dataArray[0] + ',' + dataArray[1].toFixed(3);
+            csvContent += index < data.length ? dataString + '\n' : dataString;
+      });
+
+      // The download function takes a CSV string, the filename and mimeType as parameters
+      // Scroll/look down at the bottom of this snippet to see how download is called
+      var download = function(content, fileName, mimeType) {
+                  var a = document.createElement('a');
+                  mimeType = mimeType || 'application/octet-stream';
+                  if (navigator.msSaveBlob) { // IE10
+                        navigator.msSaveBlob(new Blob([content], { type: mimeType }), fileName);
+                  } else if (URL && 'download' in a) { //html5 A[download]
+                   a.href = URL.createObjectURL(new Blob([content], { type: mimeType }));
+    
+                  a.setAttribute('download', fileName);
+                  document.body.appendChild(a);
+                  a.click();
+                  document.body.removeChild(a);
+                  } else {
+                        location.href = 'data:application/octet-stream,' + encodeURIComponent(content); // only this mime type is supported
                   }
-                }
-              }
-              */
+            }
+            download(csvContent, 'Puck.csv', 'text/csv;encoding:utf-8');      
+}     // end savemyCSV();
+
    
       xconnect.addEventListener("click", function () { bluetooth_connect(); xconnect.disabled = true; } );
-      savemy_CSV.addEventListener("click', function () { savemyCSV(); } );
+      savemy_CSV.addEventListener("click', function () { savemyCSV() } );
          
     }); 
   
