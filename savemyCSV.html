@@ -14,9 +14,12 @@ var data = [
 // Building the CSV from the Data two-dimensional array
 // Each column is separated by ";" and new line "\n" for next row
 var csvContent = '';
-data.forEach(function(infoArray, index) {
-  dataString = infoArray.join(',');
-  csvContent += index < data.length ? dataString + '\n' : dataString;
+data.forEach(function(dataArray, index) {
+ var infoArray;
+ var infoArray[1,1] = data[index,1];
+ var infoArray[1,2] = data[index,2].toFixed(3);
+ dataString = infoArray.join(',');
+ csvContent += index < data.length ? dataString + '\n' : dataString;
 });
 
 // The download function takes a CSV string, the filename and mimeType as parameters
