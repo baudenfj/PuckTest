@@ -55,18 +55,6 @@ $(document).ready(function () {
     
       function start_record()
       {
-                  // Handle the data we get back, and call 'onLine'
-                  // whenever we get a line
-                        var buf = "";
-                        connection.on("data", function(d) {
-                         buf += d;
-                        var i = buf.indexOf("\n");
-                        while (i>=0) {
-                              onLine(buf.substr(0,i));
-                              buf = buf.substr(i+1);
-                              i = buf.indexOf("\n");
-                            }
-                        }); // connection.on ()
                         
                         connection.write("setInterval(function(){Bluetooth.println(readpressure().toFixed(3));} ,30); \n", function() { });
                         
@@ -94,8 +82,9 @@ $(document).ready(function () {
                           return;
                         }
                         connection = c;
-  /*                      // Handle the data we get back, and call 'onLine'
-                        // whenever we get a line
+                  
+                  // Handle the data we get back, and call 'onLine'
+                  // whenever we get a line
                         var buf = "";
                         connection.on("data", function(d) {
                          buf += d;
@@ -105,7 +94,7 @@ $(document).ready(function () {
                               buf = buf.substr(i+1);
                               i = buf.indexOf("\n");
                             }
-                        }); // connection.on ()*/
+                        }); // connection.on ()
 
             }); // End Puck.connect () 
 }   
