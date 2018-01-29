@@ -15,7 +15,7 @@ var data = [
 // Each column is separated by ";" and new line "\n" for next row
 var csvContent = '';
 data.forEach(function(dataArray, index) {
- var infoArray;
+ var infoArray = [ [ , ] ];
  infoArray[1][1] = data[index][1];
  infoArray[1][2] = data[index][2].toFixed(3);
  dataString = infoArray.join(',');
