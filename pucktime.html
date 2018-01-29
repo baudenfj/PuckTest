@@ -77,7 +77,7 @@ $(document).ready(function () {
       
       function stop_record()
       {
-             connection.write("clearInterval();\n", function() { });
+             connection.write("clearInterval(1);\n", function() { });
       };
    
       function bluetooth_connect() {
