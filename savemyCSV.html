@@ -17,7 +17,7 @@ var ttest=data[0][1];
 // Each column is separated by ";" and new line "\n" for next row
 var csvContent = '';
 data.forEach(function(dataArray, index) {
- var test = dataArray[0][1];
+ var test = dataArray[1];
  dataString = dataArray[0][0] + ','; // + test.toFixed(3);
  csvContent += index < data.length ? dataString + '\n' : dataString;
 });
