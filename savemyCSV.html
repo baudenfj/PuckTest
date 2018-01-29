@@ -16,7 +16,7 @@ var data = [
 var csvContent = '';
 data.forEach(function(dataArray, index) {
  var test = dataArray[2];
- dataString = dataArray[1] + ',' + test.toFixed(3);
+ // dataString = dataArray[1] + ',' + test.toFixed(3);
  csvContent += index < data.length ? dataString + '\n' : dataString;
 });
 
