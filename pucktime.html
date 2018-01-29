@@ -19,6 +19,7 @@ $(document).ready(function () {
       var data = [];
       var xconnect = document.getElementById("myPuck_connect");
       var savemy_CSV = document.getElementById("my_Savedata");
+      var rec_start = document.getElementById("myrecord_start");
       var taxis_increment = 10 * 1000;           /// axis increment in milliseconds
       var t = new Date();
       var date_win_min = t.getTime();
@@ -120,6 +121,7 @@ function savemyCSV() {
    
       xconnect.addEventListener("click", function () { bluetooth_connect(); xconnect.disabled = true; } );
       savemy_CSV.addEventListener("click", function () { savemyCSV() } );
+      rec_start.addEventListener("click", function () { start_record() } );
          
     }); 
   
