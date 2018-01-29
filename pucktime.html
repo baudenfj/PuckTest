@@ -18,6 +18,7 @@
 <script type="text/javascript">
 $(document).ready(function () {
       var data = [];
+      var rec_flag = false;
       var connection;
       var xconnect = document.getElementById("myPuck_connect");
       var savemy_CSV = document.getElementById("my_Savedata");
@@ -39,15 +40,17 @@ $(document).ready(function () {
                           });
       
        function onLine(v) {
-        var x = new Date();  // current time 
-        var y = parseFloat(v);
-        if ( x.getTime() >= date_win_max) {
-              date_win_min += taxis_increment;
-              date_win_max += taxis_increment;
-              g.updateOptions( { dateWindow : [date_win_min, date_win_max] } );
-        };
-        data.push([x, y]);
-        g.updateOptions( { 'file': data } );
+            if(rec_flag) {
+                        var x = new Date();  // current time 
+                        var y = parseFloat(v);
+                        if ( x.getTime() >= date_win_max) {
+                                    date_win_min += taxis_increment;
+                                     date_win_max += taxis_increment;
+                                     g.updateOptions( { dateWindow : [date_win_min, date_win_max] } );
+                        };
+                        data.push([x, y]);
+                        g.updateOptions( { 'file': data } );
+            };
       }  
     
       function start_record()
@@ -72,12 +75,15 @@ $(document).ready(function () {
                         var date_win_max = date_win_min + 2*taxis_increment;
                         g.updateOptions( { dateWindow : [date_win_min, date_win_max] } );
                         data.splice(0,data.length);
+                        rec_flag = true;
             
       }
       
       function stop_record()
       {
-             connection.write("clearInterval(1);\n", function() { });
+            rec_flag = false; 
+            connection.write("clearInterval(1);\n", function() { });
+            
       };
    
       function bluetooth_connect() {
