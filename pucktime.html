@@ -4,7 +4,6 @@
 
 <button type="button" id="myPuck_connect" > Connect Puck via Bluetooth </button>
 <button type="button" id="myrecord_start" > Start New Recording </button>
-<button type="button" id="myrecord_stop" > Stop Recording </button>
 <button type="button" id="my_Savedata" > Save Date as  CSV - File </button>      
 
 <script src="https://www.puck-js.com/puck.js"></script>
@@ -23,8 +22,7 @@ $(document).ready(function () {
       var connection;
       var xconnect = document.getElementById("myPuck_connect");
       var savemy_CSV = document.getElementById("my_Savedata");
-      var rec_start = document.getElementById("myrecord_start");
-      var rec_stop = document.getElementById("myrecord_stop");  
+      var rec_startstop = document.getElementById("myrecord_start"); 
       var taxis_increment = 10 * 1000;           /// axis increment in milliseconds
       var t = new Date();
       var date_win_min = t.getTime();
@@ -54,27 +52,25 @@ $(document).ready(function () {
             };
       }  
     
-      function start_record()
-      {
-                        
-                        connection.write("setInterval(function(){Bluetooth.println(readpressure().toFixed(3));} ,30); \n", function() { });
-                        
-                        t = new Date();
-                        start_time = t;
-                        var date_win_min = t.getTime();
-                        var date_win_max = date_win_min + 2*taxis_increment;
-                        g.updateOptions( { dateWindow : [date_win_min, date_win_max] } );
-                        data.splice(0,data.length);
-                        rec_flag = true;
+      function startstop_record()
+      {                
+                        if(rec_flag) {
+                              document.getElementById("myButton2").innnerHTML= "Start New Recording";
+                              rec_flag = false; 
+                              connection.write("clearInterval(1);\n", function() { });
+                        } else {
+                              connection.write("setInterval(function(){Bluetooth.println(readpressure().toFixed(3));} ,30); \n", function() { });
+                              t = new Date();
+                              start_time = t;
+                              var date_win_min = t.getTime();
+                              var date_win_max = date_win_min + 2*taxis_increment;
+                              g.updateOptions( { dateWindow : [date_win_min, date_win_max] } );
+                              data.splice(0,data.length);
+                              rec_flag = true;
+                              document.getElementById("myButton2").innnerHTML= "Stop Recording";
+                        };
             
       }
-      
-      function stop_record()
-      {
-            rec_flag = false; 
-            connection.write("clearInterval(1);\n", function() { });
-            
-      };
    
       function bluetooth_connect() {
             Puck.connect(function(c) {
@@ -134,9 +130,7 @@ function savemyCSV() {
    
       xconnect.addEventListener("click", function () { bluetooth_connect(); xconnect.disabled = true; } );
       savemy_CSV.addEventListener("click", function () { savemyCSV() } );
-      rec_start.addEventListener("click", function () { start_record() } );
-      rec_stop.addEventListener("click", function () { stop_record() } );
-         
+      rec_startstop.addEventListener("click", function () { startstop_record() } );
     }); 
   
   
