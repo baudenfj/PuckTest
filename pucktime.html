@@ -60,7 +60,6 @@ $(document).ready(function () {
                               rec_flag = false; 
                               connection.write("clearInterval(1)\n", function() { });
                         } else {
-                              connection.write("setInterval(function(){Bluetooth.println(readpressure().toFixed(3));} ,30); \n", function() { });
                               t = new Date();
                               start_time = t;
                               Puck.setTime(start_time);
@@ -68,6 +67,7 @@ $(document).ready(function () {
                               var date_win_max = date_win_min + 2*taxis_increment;
                               g.updateOptions( { dateWindow : [date_win_min, date_win_max] } );
                               data.splice(0,data.length);
+                              connection.write("setInterval(function(){Bluetooth.println(readpressure().toFixed(3));} ,30); \n", function() { });
                               rec_flag = true;
                               rec_startstop.textContent= "Stop Recording";
                         };     
