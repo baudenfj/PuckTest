@@ -19,6 +19,7 @@
 $(document).ready(function () {
       var data = [];
       var rec_flag = false;
+      var start_time;
       var connection;
       var xconnect = document.getElementById("myPuck_connect");
       var savemy_CSV = document.getElementById("my_Savedata");
@@ -59,6 +60,7 @@ $(document).ready(function () {
                         connection.write("setInterval(function(){Bluetooth.println(readpressure().toFixed(3));} ,30); \n", function() { });
                         
                         t = new Date();
+                        start_time = t;
                         var date_win_min = t.getTime();
                         var date_win_max = date_win_min + 2*taxis_increment;
                         g.updateOptions( { dateWindow : [date_win_min, date_win_max] } );
@@ -103,7 +105,8 @@ function savemyCSV() {
       var csvContent = '';
 
       data.forEach(function(dataArray, index) {
-            dataString = dataArray[0] + ',' + dataArray[1].toFixed(3);
+            var diff_time = dataArray[0].getTime()-start_time;
+            dataString = diff_time.toFixed(0) + ',' + dataArray[1].toFixed(3);
             csvContent += index < data.length ? dataString + '\n' : dataString;
       });
 
