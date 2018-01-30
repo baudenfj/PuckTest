@@ -25,6 +25,7 @@ $(document).ready(function () {
       var rec_startstop = document.getElementById("myrecord_start"); 
       var taxis_increment = 10 * 1000;           /// axis increment in milliseconds
       var t = new Date();
+      data.push([t, 1000.000]);
       var date_win_min = t.getTime();
       var date_win_max = date_win_min + 2*taxis_increment;   
             
@@ -55,7 +56,7 @@ $(document).ready(function () {
       function startstop_record()
       {                
                         if(rec_flag) {
-                              rec_startstop.innerHTML = "Start New Recording";
+                              rec_startstop.textContent = "Start New Recording";
                               rec_flag = false; 
                               connection.write("clearInterval(1)\n", function() { });
                         } else {
@@ -93,7 +94,7 @@ $(document).ready(function () {
                               i = buf.indexOf("\n");
                             }
                         }); // connection.on ()
-
+                        xconnect.contentextContent = "Disconnect Puck via Bluetooth";
             }); // End Puck.connect () 
 }   
       
@@ -128,7 +129,7 @@ function savemyCSV() {
 }     // end savemyCSV();
 
    
-      xconnect.addEventListener("click", function () { bluetooth_connect(); xconnect.disabled = true; } );
+      xconnect.addEventListener("click", function () { bluetooth_connect() } );
       savemy_CSV.addEventListener("click", function () { savemyCSV() } );
       rec_startstop.addEventListener("click", function () { startstop_record() } );
     }); 
