@@ -55,7 +55,7 @@ $(document).ready(function () {
       function startstop_record()
       {                
                         if(rec_flag) {
-                              document.getElementById("myButton2").innnerHTML= "Start New Recording";
+                              document.getElementById("myButton2").innnerText= "Start New Recording";
                               rec_flag = false; 
                               connection.write("clearInterval(1);\n", function() { });
                         } else {
@@ -67,7 +67,7 @@ $(document).ready(function () {
                               g.updateOptions( { dateWindow : [date_win_min, date_win_max] } );
                               data.splice(0,data.length);
                               rec_flag = true;
-                              document.getElementById("myButton2").innnerHTML= "Stop Recording";
+                              document.getElementById("myButton2").innnerText= "Stop Recording";
                         };
             
       }
