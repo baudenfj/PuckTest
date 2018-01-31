@@ -104,12 +104,6 @@ function savemyCSV() {
             dataString = diff_time.toFixed(0) + ',' + dataArray[1].toFixed(3);
             csvContent += index < data.length ? dataString + '\n' : dataString;
       });
-////
-      
-  var text = $("#textarea").val();
-  var filename = $("#input-fileName").val()
-  var blob = new Blob([text], {type: "text/plain;charset=utf-8"});
-  // saveAs(csvContent, filename+".txt");
 
       // The download function takes a CSV string, the filename and mimeType as parameters
       // Scroll/look down at the bottom of this snippet to see how download is called
