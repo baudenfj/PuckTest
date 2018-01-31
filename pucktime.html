@@ -29,12 +29,6 @@ $(document).ready(function () {
       var date_win_min = t.getTime();
       var date_win_max = date_win_min + 2*taxis_increment;   
       
-$('#ExportToExcel').click(function () {
-                $('#form').attr({ action: 'bla' });
-                $('#form').submit();
-                return false;
-            });
-      
       var g = new Dygraph(document.getElementById("div_g"), data,
                           {
                             drawPoints: true,
