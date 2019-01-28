@@ -60,7 +60,8 @@
                         chart.draw(data, options);
             };
       } 
-            function bluetooth_connect() {
+      
+      function bluetooth_connect() {
             Puck.connect(function(c) {
               //      alert("In Puck connect");
                       if (!c) {
@@ -82,7 +83,7 @@
                         }); // connection.on ()
                         xconnect.textContent = "Disconnect Puck via Bluetooth";
             }); // End Puck.connect ()
-      
+      }
               
       xconnect.addEventListener("click", function () { bluetooth_connect() } );
       savemy_CSV.addEventListener("click", function () { savemyCSV() }
