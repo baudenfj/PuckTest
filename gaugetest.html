@@ -9,11 +9,11 @@
 
         var data = google.visualization.arrayToDataTable([
           ['Label', 'Value'],
-          ['Pressure', 80],
+          ['Pressure', 80]
         ]);
 
         var options = {
-          width: 400, height: 120,
+          width: 1200, height: 1200,
           redFrom: 90, redTo: 100,
           yellowFrom:75, yellowTo: 90,
           minorTicks: 5
@@ -26,7 +26,7 @@
         setInterval(function() {
           data.setValue(0, 1, 40 + Math.round(60 * Math.random()));
           chart.draw(data, options);
-        }, 13000);
+        }, 5000);
       }
     </script>
   </head>
