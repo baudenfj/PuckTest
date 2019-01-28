@@ -48,13 +48,17 @@
       var xconnect = document.getElementById("myPuck_connect");
       var savemy_CSV = document.getElementById("my_Savedata");
       var rec_startstop = document.getElementById("myrecord_start"); 
-      var taxis_increment = 10 * 1000;           /// axis increment in milliseconds
       var t = new Date();  
       
+      $("div").click(function() {
+            alert("Hello, world!");
+          });   
+        
       function onLine(v) {
             if(rec_flag) {
                         var x = new Date();  // current time 
-                        var y = parseFloat(v);
+                        var y = 40 + Math.round(60 * Math.random();
+                            //  parseFloat(v);
                         pressure.push([x, y]);
                         data.setValue(0, 1, y));
                         chart.draw(data, options);
