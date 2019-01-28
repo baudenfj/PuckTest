@@ -17,7 +17,7 @@ google.charts.load('current', {'packages':['gauge']});
 google.charts.setOnLoadCallback(drawChart);
 
 function drawChart() {
-        var data = google.visualization.arrayToDataTable([
+        var gauge = google.visualization.arrayToDataTable([
           ['Label', 'Value'],
           ['Memory', 80]
         ]);
@@ -31,7 +31,7 @@ function drawChart() {
 
         var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
 
-        chart.draw(data, options);
+        chart.draw(gauge, options);
       
 <script type="text/javascript">
 $(document).ready(function () {
@@ -42,35 +42,17 @@ $(document).ready(function () {
       var xconnect = document.getElementById("myPuck_connect");
       var savemy_CSV = document.getElementById("my_Savedata");
       var rec_startstop = document.getElementById("myrecord_start"); 
-      var taxis_increment = 10 * 1000;           /// axis increment in milliseconds
       var t = new Date();
-      data.push([t, 1000.000]);
       var date_win_min = t.getTime();
-      var date_win_max = date_win_min + 2*taxis_increment;   
-      
-      var g = new Dygraph(document.getElementById("div_g"), data,
-                          {
-                            drawPoints: true,
-                            showRoller: true,
-                            digitsAfterDecimal: 3,
-                            dateWindow: [date_win_min, date_win_max],
-                            // valueRange: [980, 1020],
-                            labels: ['Time', 'Pressure'],
-                            showRangeSelector: true
-                          });
+
       
        function onLine(v) {
             if(rec_flag) {
                         var x = new Date();  // current time 
                         var y = parseFloat(v);
-                        if ( x.getTime() >= date_win_max) {
-                                    date_win_min += taxis_increment;
-                                     date_win_max += taxis_increment;
-                                     g.updateOptions( { dateWindow : [date_win_min, date_win_max] } );
-                        };
                         data.push([x, y]);
-                        data.setValue(0, 1, y);
-                        chart.draw(data, options);
+                        gauge.setValue(0, 1, y);
+                        chart.draw(gauge, options);
             };
       }  
     
@@ -85,9 +67,7 @@ $(document).ready(function () {
                               connection.write("setInterval(function(){Bluetooth.println(readpressure().toFixed(3));} ,18); \n", function() { });
                               t = new Date();
                               start_time = t;
-                              var date_win_min = t.getTime();
-                              var date_win_max = date_win_min + 2*taxis_increment;
-                              g.updateOptions( { dateWindow : [date_win_min, date_win_max] } );                       
+                              var date_win_min = t.getTime();                    
                               rec_flag = true;
                               rec_startstop.textContent= "Stop Recording";
                         };     
