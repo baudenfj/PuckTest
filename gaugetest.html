@@ -39,7 +39,8 @@
   </head>
   <body>
     <script type="text/javascript">
-    $(document).ready(function () {
+  
+ $(document).ready(function () {
       var pressure = [];
       var rec_flag = false;
       var start_time;
@@ -91,7 +92,8 @@
       xconnect.addEventListener("click", function () { bluetooth_connect() } );
       savemy_CSV.addEventListener("click", function () { savemyCSV() }
       rec_startstop.addEventListener("click", function () { startstop_record() } );
-    })
+ })
+    </script>
     <div id="chart_div" style="width: 1000px; height: 1000px;"></div>
-    /body>
+    </body>
 </html>
