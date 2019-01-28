@@ -38,8 +38,10 @@
     </script>
   </head>
   <body>
-    <script type="text/javascript">
-  
+ 
+ <div id="chart_div" style="width: 1000px; height: 1000px;"></div>
+    
+ <script type="text/javascript">
  $(document).ready(function () {
       var pressure = [];
       var rec_flag = false;
@@ -94,6 +96,6 @@
       rec_startstop.addEventListener("click", function () { startstop_record() } );
  })
     </script>
-    <div id="chart_div" style="width: 1000px; height: 1000px;"></div>
+
     </body>
 </html>
