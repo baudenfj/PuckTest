@@ -10,9 +10,6 @@
 <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>      
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
-</head>
-<body>
-
 google.charts.load('current', {'packages':['gauge']});
 google.charts.setOnLoadCallback(drawChart);
 
@@ -32,8 +29,12 @@ function drawChart() {
         var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
 
         chart.draw(gauge, options);
-      
-<script type="text/javascript">
+ </script>
+        
+       </head>
+        <body>
+
+<script type="text/javascript">     
 $(document).ready(function () {
       var data = [];
       var rec_flag = false;
