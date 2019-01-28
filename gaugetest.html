@@ -41,7 +41,7 @@
     <div id="chart_div" style="width: 1000px; height: 1000px;"></div>
     <script type="text/javascript">
     $(document).ready(function () {
-      var data = [];
+      var pressure = [];
       var rec_flag = false;
       var start_time;
       var connection;
@@ -55,13 +55,9 @@
             if(rec_flag) {
                         var x = new Date();  // current time 
                         var y = parseFloat(v);
-                        if ( x.getTime() >= date_win_max) {
-                                    date_win_min += taxis_increment;
-                                     date_win_max += taxis_increment;
-                                     g.updateOptions( { dateWindow : [date_win_min, date_win_max] } );
-                        };
-                        data.push([x, y]);
-                        g.updateOptions( { 'file': data } );
+                        pressure.push([x, y]);
+                        data.setValue(0, 1, y));
+                        chart.draw(data, options);
             };
       } 
             function bluetooth_connect() {
