@@ -80,7 +80,8 @@ $(document).ready(function () {
    
       function bluetooth_connect() {
             Puck.connect(function(c) {
-              //      alert("In Puck connect");
+                    alert("In Puck connect");
+                    chart.draw(gauge, options);
                       if (!c) {
                       alert("Couldn't connect!");
                           return;
