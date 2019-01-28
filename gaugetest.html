@@ -1,7 +1,14 @@
 <html>
-  <head>
-   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-   <script type="text/javascript">
+<head>    
+<button type="button" id="myPuck_connect" > Connect Puck via Bluetooth </button>
+<button type="button" id="myrecord_start" > Start New Recording </button>
+<button type="button" id="my_Savedata" > Save Date as  CSV - File </button>      
+
+<script src="https://www.puck-js.com/puck.js"></script>
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script> 
+    
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
       google.charts.load('current', {'packages':['gauge']});
       google.charts.setOnLoadCallback(drawChart);
 
@@ -32,5 +39,59 @@
   </head>
   <body>
     <div id="chart_div" style="width: 1000px; height: 1000px;"></div>
-  </body>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var data = [];
+      var rec_flag = false;
+      var start_time;
+      var connection;
+      var xconnect = document.getElementById("myPuck_connect");
+      var savemy_CSV = document.getElementById("my_Savedata");
+      var rec_startstop = document.getElementById("myrecord_start"); 
+      var taxis_increment = 10 * 1000;           /// axis increment in milliseconds
+      var t = new Date();  
+      
+      function onLine(v) {
+            if(rec_flag) {
+                        var x = new Date();  // current time 
+                        var y = parseFloat(v);
+                        if ( x.getTime() >= date_win_max) {
+                                    date_win_min += taxis_increment;
+                                     date_win_max += taxis_increment;
+                                     g.updateOptions( { dateWindow : [date_win_min, date_win_max] } );
+                        };
+                        data.push([x, y]);
+                        g.updateOptions( { 'file': data } );
+            };
+      } 
+            function bluetooth_connect() {
+            Puck.connect(function(c) {
+              //      alert("In Puck connect");
+                      if (!c) {
+                      alert("Couldn't connect!");
+                          return;
+                        }
+                        connection = c;               
+                  // Handle the data we get back, and call 'onLine'
+                  // whenever we get a line
+                        var buf = "";
+                        connection.on("data", function(d) {
+                         buf += d;
+                        var i = buf.indexOf("\n");
+                        while (i>=0) {
+                              onLine(buf.substr(0,i));
+                              buf = buf.substr(i+1);
+                              i = buf.indexOf("\n");
+                            }
+                        }); // connection.on ()
+                        xconnect.textContent = "Disconnect Puck via Bluetooth";
+            }); // End Puck.connect ()
+      
+              
+      xconnect.addEventListener("click", function () { bluetooth_connect() } );
+      savemy_CSV.addEventListener("click", function () { savemyCSV() }
+      rec_startstop.addEventListener("click", function () { startstop_record() } );
+    })
+    
+    /body>
 </html>
