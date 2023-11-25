@@ -35,8 +35,8 @@ $(document).ready(function () {
                             showRoller: true,
                             digitsAfterDecimal: 3,
                             dateWindow: [date_win_min, date_win_max],
-                            // valueRange: [980, 1020],
-                            labels: ['Time', 'Pressure'],
+                            valueRange: [0, 3],
+                            labels: ['Time', 'Stretch'],
                             showRangeSelector: true
                           });
       
@@ -50,7 +50,7 @@ $(document).ready(function () {
                                      g.updateOptions( { dateWindow : [date_win_min, date_win_max] } );
                         };
                         data.push([x, y]);
-                        if ((data.length&15)==15) g.updateOptions( { 'file': data } );
+                        if ((data.length&10)==10) g.updateOptions( { 'file': data } );
             };
       }  
     
