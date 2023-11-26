@@ -25,7 +25,6 @@ $(document).ready(function () {
       var rec_startstop = document.getElementById("myrecord_start"); 
       var taxis_increment = 10 * 1000;           /// axis increment in milliseconds
       var t = new Date();
-      data.push([t, 45.000]);
       var date_win_min = t.getTime();
       var date_win_max = date_win_min + 2*taxis_increment;   
       
@@ -35,7 +34,7 @@ $(document).ready(function () {
                             showRoller: true,
                             digitsAfterDecimal: 3,
                             dateWindow: [date_win_min, date_win_max],
-                            valueRange: [40, 60],
+                            valueRange: [0, 6],
                             labels: ['Time', 'Stretch'],
                             showRangeSelector: true
                           });
